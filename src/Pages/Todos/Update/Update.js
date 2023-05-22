@@ -72,34 +72,28 @@ const Update = () => {
     </div>
   ) : (
     <div>
-      {note === "" ? (
-        <div className="text-center">
-          <Spinner />
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="note" className="form-label">
+            Update Your Task:
+          </label>
+          <textarea
+            className="form-control"
+            id="note"
+            rows="3"
+            value={note.note}
+            onChange={handleInputChange}></textarea>
+          {error && <p className="text-danger">{error}</p>}
         </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="note" className="form-label">
-              Update Your Task:
-            </label>
-            <textarea
-              className="form-control"
-              id="note"
-              rows="3"
-              value={note.note}
-              onChange={handleInputChange}></textarea>
-            {error && <p className="text-danger">{error}</p>}
-          </div>
-          <div className="mb-3">
-            <Button type="submit" className="btn btn-primary">
-              Update
-            </Button>
-            <Link to="/" className="btn btn-secondary ms-2">
-              Cancel
-            </Link>
-          </div>
-        </form>
-      )}
+        <div className="mb-3">
+          <Button type="submit" className="btn btn-primary">
+            Update
+          </Button>
+          <Link to="/" className="btn btn-secondary ms-2">
+            Cancel
+          </Link>
+        </div>
+      </form>
     </div>
   );
 };

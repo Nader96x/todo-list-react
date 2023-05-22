@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../../Axios";
 
-import { Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 const View = () => {
   const id = useParams().id;
-
+  const navigate = useNavigate();
   const [todo, setTodo] = useState({});
 
   useEffect(() => {
@@ -21,10 +21,14 @@ const View = () => {
     }
   };
 
+  const back = async () => {
+    navigate("/");
+  };
+
   return todo.id ? (
     <div>
       {/* <h1>{todo.id}</h1> */}
-
+      <Button onClick={back}>Back</Button>
       <textarea
         style={{ resize: "none" }}
         readOnly
